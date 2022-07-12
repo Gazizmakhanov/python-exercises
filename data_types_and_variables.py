@@ -39,12 +39,11 @@ if the_buy>=2 and expiration=='not expired'and premium_buyer==TRUE:
 # the password must not be the same as the username
 # bonus neither the username or password can start or end with whitespace
  
-password_length=17
-username_length=18
-pasword!=username
+username = 'codeup'
+password = 'notastrongpassword'
 
-if password_length==17 and username_length==8 and pasword!=username:
-    valid_pasword==TRUE
+if (len(password)>=5) & (len(username)<=20) & (password!=username):
+    valid_pasword=TRUE
 
 
 
