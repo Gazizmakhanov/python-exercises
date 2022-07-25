@@ -1,0 +1,126 @@
+import matplotlib.pyplot as plt
+
+x = list(range(10))
+
+[n+5 for n in x]
+
+x = list(range(-20,20))
+y = [n**2 - n + 2 for n in x]
+
+plt.plot(x,y)
+plt.annotate('origin', xy=(0,0), xytext=(0,100), 
+             arrowprops={'facecolor':'grey', 'arrowstyle':'->'})
+
+plt.show()
+
+import math
+x = range(0,10)
+y = [math.sqrt(n) for n in x]
+
+plt.plot(x,y)
+plt.show()
+
+x = range(-10,10)
+y = [n**3 for n in x ]
+
+plt.plot(x,y)
+plt.show()
+
+x = range(0,10)
+y = [2**n for n in x]
+
+plt.plot(x,y)
+plt.show()
+
+x = range(2,10)
+y = [1/(n-1) for n in x]
+
+plt.plot(x,y)
+plt.show()
+
+plt.figure(figsize=(12,6))
+
+x = range(0,10)
+y = [math.sqrt(n) for n in x]
+plt.subplot(221)
+plt.plot(x,y)
+plt.title('sqaure root of x')
+
+x = range(-10,10)
+y = [n**3 for n in x ]
+plt.subplot(222)
+plt.plot(x,y)
+plt.title('x^3')
+
+
+x = range(0,10)
+y = [2**n for n in x]
+plt.subplot(223)
+plt.plot(x,y)
+plt.title('n^x')
+
+x = range(2,10)
+y = [1/(n-1) for n in x]
+plt.subplot(224)
+plt.plot(x,y)
+plt.title('1/(x-1)')
+
+plt.suptitle('These are my four functions')
+plt.show()
+
+plt.figure(figsize=(12,6))
+
+x = range(0,10)
+y = [math.sqrt(n) for n in x]
+plt.plot(x,y, c='black')
+
+
+x = range(-10,10)
+y = [n**3 for n in x ]
+plt.plot(x,y, c='lightgreen')
+
+x = range(0,10)
+y = [2**n for n in x]
+plt.plot(x,y, c='salmon')
+
+x = range(2,10)
+y = [1/(n-1) for n in x]
+plt.plot(x,y, c='b')
+
+plt.xlim(0,9)
+plt.ylim(0,10)
+
+plt.title('My Four Functions')
+plt.legend(['$\sqrt{x}$', '$x^{3}$', '$2^{x}$', '1/(x-1)'])
+plt.show()
+
+x = range(1,20)
+plt.figure(figsize=(12,6))
+
+y1 = [0*n + 1 for n in x]
+y2 = [math.log(n) for n in x]
+y3 = [n for n in x]
+y4 = [n * math.log(n) for n in x]
+y5 = [n**2 for n in x]
+y6 = [2**n for n in x]
+y7 = [math.factorial(n) for n in x]
+y8 = [n**n for n in x]
+
+plt.plot(x,y1, label='O(1)')
+plt.plot(x,y2, label='O(log(n))')
+plt.plot(x,y3, label='O(n)')
+plt.plot(x,y4, label='O(n log n)')
+plt.plot(x,y5, label='O($n^{2}$)')
+plt.plot(x,y6, label='O($2^{n}$)')
+plt.plot(x,y7, label='O(n!)')
+plt.plot(x,y8, label='O($n^{n}$)')
+
+plt.ylim(0,50)
+
+plt.title('range of big O notations')
+plt.legend()
+plt.show()
+
+
+
+
