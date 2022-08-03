@@ -1,0 +1,67 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+
+office_1=stats.norm(90, 14).rvs(40)
+office_2=stats.norm(100, 20).rvs(50)
+t, p=stats.levene(office_1, office_2)
+print(t, p)
+# H0 there is no difference
+# H1 there is a difference
+
+t, p=stats.ttest_ind(office_1, office_2, equal_var=False )
+
+print(t, p)
+
+from pydataset import data
+mpg=data('mpg')
+
+print(mpg.head())
+
+mpg['avg_fe']=stats.hmean(mpg[['cty', 'hwy']], axis=1)
+
+#H0 there is no difference
+#H1 there is a difference
+
+mpg_2008=mpg[mpg.year==2008].avg_fe
+mpg_1999=mpg[mpg.year==1999].avg_fe
+
+t, p=stats.levene(mpg_1999, mpg_2008)
+
+print(t, p)
+
+t, p=stats.ttest_ind(mpg_2008, mpg_1999, equal_var=True)
+
+print(t, p)
+
+
+
+mpg['avg_fe']=stats.hmean(mpg[['cty', 'hwy']], axis=1)
+
+print(mpg.head())
+
+compact_mpg=mpg[mpg['class']=='compact'].avg_fe
+
+overal_mpg=mpg.avg_fe.mean()
+print(overal_mpg)
+
+#H0 there is no difference
+#H1 there is a difference
+
+t, p=stats.ttest_1samp(compact_mpg, overal_mpg)
+print(t, p)
+
+
+manual_mpg=mpg[mpg.trans.str.contains('manual')].avg_fe
+automatic_mpg=mpg[mpg.trans.str.contains('auto')].avg_fe
+
+
+
+t, p=stats.levene=[manual_mpg, automatic_mpg]
+print(t, p)
+
+t, p=stats.ttest_ind(manual_mpg, automatic_mpg, equal_var=False)
+
+print(t,p)
