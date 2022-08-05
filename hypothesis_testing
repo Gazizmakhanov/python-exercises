@@ -57,7 +57,8 @@ print(t, p)
 manual_mpg=mpg[mpg.trans.str.contains('manual')].avg_fe
 automatic_mpg=mpg[mpg.trans.str.contains('auto')].avg_fe
 
-
+# H0 there is no difference
+# H1 there is a difference
 
 t, p=stats.levene=[manual_mpg, automatic_mpg]
 print(t, p)
@@ -65,3 +66,9 @@ print(t, p)
 t, p=stats.ttest_ind(manual_mpg, automatic_mpg, equal_var=False)
 
 print(t,p)
+
+
+telco=pd.read_csv('telco_churn.csv')
+
+
+print(telco.head())
